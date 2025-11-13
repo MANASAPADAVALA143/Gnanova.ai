@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Zap, Target, TrendingUp, CheckCircle2, ArrowRight, Play, Star, Users, Calendar, BarChart3, Brain, Rocket, Shield, Clock } from 'lucide-react';
+import { Sparkles, Zap, Target, TrendingUp, CheckCircle2, ArrowRight, Play, Star, Users, Calendar, BarChart3, Brain, Rocket, Shield, Clock, Video, MessageCircle, Workflow, Bot, Cpu, Wand2 } from 'lucide-react';
 
 export const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -14,37 +14,49 @@ export const LandingPage = () => {
 
   const features = [
     {
-      icon: Brain,
-      title: 'AI Content Generation',
-      description: 'Create engaging social media posts in seconds with our advanced AI technology',
+      icon: Video,
+      title: 'AI Video Creation',
+      description: 'Generate stunning videos that captivate your audience and amplify your message across every platform',
       color: 'from-[#667eea] to-[#764ba2]',
     },
     {
-      icon: Calendar,
-      title: 'Multi-Platform Scheduling',
-      description: 'Schedule and publish content across all major social platforms from one dashboard',
+      icon: Bot,
+      title: 'Intelligent AI Agents',
+      description: 'Deploy smart conversational agents on WhatsApp, websites, and beyond to automate customer interactions',
       color: 'from-[#f093fb] to-[#f5576c]',
     },
     {
-      icon: BarChart3,
-      title: 'Advanced Analytics',
-      description: 'Track performance with real-time insights and detailed engagement metrics',
+      icon: Workflow,
+      title: 'Automation Workflows',
+      description: 'Build sophisticated n8n automation systems that eliminate repetitive tasks and supercharge productivity',
       color: 'from-[#4facfe] to-[#00f2fe]',
+    },
+    {
+      icon: Wand2,
+      title: 'Social Media AI Content',
+      description: 'Craft scroll-stopping social content that resonates, engages, and converts at scale',
+      color: 'from-[#43e97b] to-[#38f9d7]',
+    },
+    {
+      icon: Cpu,
+      title: 'Custom AI Development',
+      description: 'Tailored AI solutions engineered specifically for your unique business challenges and opportunities',
+      color: 'from-[#fa709a] to-[#fee140]',
     },
   ];
 
   const stats = [
-    { value: '10,000+', label: 'Posts Generated' },
-    { value: '500+', label: 'Active Clients' },
-    { value: '99.9%', label: 'Uptime' },
-    { value: '4.8/5', label: 'User Rating' },
+    { value: '100+', label: 'Hours Saved Monthly' },
+    { value: '500+', label: 'AI Solutions Deployed' },
+    { value: '3x', label: 'Avg ROI Increase' },
+    { value: '24/7', label: 'AI Agent Availability' },
   ];
 
   const benefits = [
-    { icon: Clock, title: 'Save 20+ Hours Weekly', description: 'Automate your content creation and scheduling' },
-    { icon: TrendingUp, title: 'Boost Engagement by 3x', description: 'AI-optimized content that resonates with your audience' },
-    { icon: Target, title: 'Brand Consistency', description: 'Maintain your unique voice across all platforms' },
-    { icon: Shield, title: 'Enterprise Security', description: 'Bank-level encryption and data protection' },
+    { icon: Clock, title: 'Reclaim 100+ Hours Every Month', description: 'Automate workflows, content creation, and customer interactions while you focus on growth' },
+    { icon: TrendingUp, title: 'Multiply Your Output by 10x', description: 'AI-powered efficiency that transforms how fast you can scale and deliver value' },
+    { icon: Target, title: 'Precision-Engineered Solutions', description: 'Custom AI products built specifically for your brand, audience, and business objectives' },
+    { icon: Shield, title: 'Future-Proof Technology', description: 'Cutting-edge AI infrastructure that evolves with emerging trends and innovations' },
   ];
 
   return (
@@ -118,21 +130,21 @@ export const LandingPage = () => {
         <div className="relative max-w-6xl mx-auto text-center z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 animate-slideDown">
             <Sparkles className="w-4 h-4 text-[#667eea]" />
-            <span className="text-sm text-gray-300">AI-Powered Marketing Automation</span>
+            <span className="text-sm text-gray-300">Universal AI Agency - Your Growth Partner</span>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-slideUp">
             <span className="bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent">
-              Create Content
+              Transform Your Business
             </span>
             <br />
             <span className="bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#4facfe] bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-              10x Faster
+              With AI Excellence
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto animate-slideUp" style={{ animationDelay: '0.2s' }}>
-            Generate engaging social media content with AI, schedule posts across all platforms, and grow your brand on autopilot.
+            Build AI-powered videos, intelligent agents, custom automations, and workflows that amplify your brand and reclaim 100+ hours monthly.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slideUp" style={{ animationDelay: '0.4s' }}>
@@ -173,21 +185,21 @@ export const LandingPage = () => {
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6">
               <Zap className="w-4 h-4 text-[#f093fb]" />
-              <span className="text-sm text-gray-300">Powerful Features</span>
+              <span className="text-sm text-gray-300">Comprehensive AI Arsenal</span>
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Everything You Need to
+              AI Products & Agents
               <br />
               <span className="bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#4facfe] bg-clip-text text-transparent">
-                Dominate Social Media
+                Built For Your Success
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              All the tools you need to create, schedule, and analyze your content in one powerful platform
+              From intelligent video creation to conversational WhatsApp bots, we engineer AI solutions that deliver measurable business growth
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, idx) => (
               <div
                 key={idx}
@@ -216,17 +228,17 @@ export const LandingPage = () => {
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6">
                 <Target className="w-4 h-4 text-[#4facfe]" />
-                <span className="text-sm text-gray-300">Why Choose Us</span>
+                <span className="text-sm text-gray-300">The Gnanova Advantage</span>
               </div>
               <h2 className="text-5xl font-bold mb-6">
-                Transform Your
+                Experience AI That
                 <br />
                 <span className="bg-gradient-to-r from-[#667eea] to-[#f093fb] bg-clip-text text-transparent">
-                  Social Media Game
+                  Actually Delivers ROI
                 </span>
               </h2>
               <p className="text-xl text-gray-400 mb-12">
-                Join hundreds of businesses that have scaled their social media presence with Gnanova.ai
+                Join forward-thinking businesses leveraging our AI expertise to dominate their markets and unlock exponential growth
               </p>
 
               <div className="space-y-6">
@@ -275,16 +287,16 @@ export const LandingPage = () => {
               <span className="text-sm text-gray-300">Testimonials</span>
             </div>
             <h2 className="text-5xl font-bold mb-6">
-              Loved by
-              <span className="bg-gradient-to-r from-[#667eea] to-[#f093fb] bg-clip-text text-transparent"> 500+ Businesses</span>
+              Trusted by
+              <span className="bg-gradient-to-r from-[#667eea] to-[#f093fb] bg-clip-text text-transparent"> Visionary Leaders</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'Sarah Johnson', role: 'Marketing Director', company: 'TechCorp', rating: 5, text: 'Gnanova.ai has completely transformed how we manage our social media. We\'ve seen a 3x increase in engagement!' },
-              { name: 'Michael Chen', role: 'Founder', company: 'StartupXYZ', rating: 5, text: 'The AI-generated content is incredibly accurate and saves us 20+ hours every week. Game changer!' },
-              { name: 'Emma Williams', role: 'Social Media Manager', company: 'BrandCo', rating: 5, text: 'Best investment we\'ve made for our marketing stack. The ROI is undeniable.' },
+              { name: 'Rajesh Kumar', role: 'CEO', company: 'EdTech Innovations', rating: 5, text: 'Gnanova.ai built custom AI agents that handle 80% of our customer queries. We\'ve reclaimed countless hours and our response time went from hours to seconds!' },
+              { name: 'Priya Sharma', role: 'Marketing Head', company: 'E-Commerce Pro', rating: 5, text: 'Their AI video creation and social content automation delivered a 4x ROI in just 3 months. Exceptional quality, unmatched efficiency.' },
+              { name: 'Amit Patel', role: 'Operations Director', company: 'FinTech Solutions', rating: 5, text: 'The n8n automation workflows they designed eliminated 100+ hours of manual work monthly. This is what true digital transformation looks like.' },
             ].map((testimonial, idx) => (
               <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-2">
                 <div className="flex gap-1 mb-4">
@@ -319,10 +331,10 @@ export const LandingPage = () => {
         <div className="relative max-w-4xl mx-auto text-center">
           <Rocket className="w-20 h-20 text-white mx-auto mb-8" />
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Ready to 10x Your Content?
+            Ready to Unleash AI Superpowers?
           </h2>
           <p className="text-xl text-white/90 mb-12">
-            Join 500+ businesses already using Gnanova.ai to dominate social media
+            Partner with us to build AI products, agents, and automations that revolutionize how you work and win
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
