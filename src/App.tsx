@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { ClientProvider } from './contexts/ClientContext';
 import { LandingPage } from './pages/LandingPage';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
@@ -9,6 +10,7 @@ import { ContentDetail } from './pages/ContentDetail';
 import { Calendar } from './pages/Calendar';
 import { Analytics } from './pages/Analytics';
 import { Settings } from './pages/Settings';
+import { SrikanthDashboard } from './pages/client/SrikanthDashboard';
 import { ToastContainer } from './components/Toast';
 import { AIChat } from './components/AIChat';
 import { useToast } from './hooks/useToast';
@@ -122,6 +124,22 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/client/srikanth-academy/dashboard"
+          element={
+            <ProtectedRoute>
+              <SrikanthDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/client/srikanth-academy/*"
+          element={
+            <ProtectedRoute>
+              <SrikanthDashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );
@@ -131,7 +149,9 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppContent />
+        <ClientProvider>
+          <AppContent />
+        </ClientProvider>
       </AuthProvider>
     </BrowserRouter>
   );
