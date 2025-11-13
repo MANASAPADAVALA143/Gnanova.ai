@@ -11,6 +11,8 @@ import { Calendar } from './pages/Calendar';
 import { Analytics } from './pages/Analytics';
 import { Settings } from './pages/Settings';
 import { SrikanthDashboard } from './pages/client/SrikanthDashboard';
+import { SrikanthApprovals } from './pages/client/SrikanthApprovals';
+import { SrikanthContent } from './pages/client/SrikanthContent';
 import { ToastContainer } from './components/Toast';
 import { AIChat } from './components/AIChat';
 import { useToast } from './hooks/useToast';
@@ -129,6 +131,22 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <SrikanthDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/client/srikanth-academy/approvals"
+          element={
+            <ProtectedRoute>
+              <SrikanthApprovals />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/client/srikanth-academy/content"
+          element={
+            <ProtectedRoute>
+              <SrikanthContent />
             </ProtectedRoute>
           }
         />
