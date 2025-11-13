@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Clock, Sparkles, Zap, TrendingUp, CheckCircle2, Calendar, Target, ArrowRight, Play, Users, Heart, MessageSquare, Share2, Trophy, Flame, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Clock, Sparkles, Zap, TrendingUp, CheckCircle2, Calendar, Target, ArrowRight, Play, Users, Heart, MessageSquare, Share2, Trophy, Flame, Star, Building2 } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { ContentCard } from '../components/ContentCard';
 import { supabase, ContentItem } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
+import { useClient } from '../contexts/ClientContext';
 import { useToast } from '../hooks/useToast';
 
 export const Dashboard = () => {
   const { user, profile } = useAuth();
+  const { clients } = useClient();
   const toast = useToast();
   const [loading, setLoading] = useState(true);
   const [pendingContent, setPendingContent] = useState<ContentItem[]>([]);
@@ -351,6 +354,49 @@ export const Dashboard = () => {
                     View Analytics
                   </button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {clients.length > 0 && (
+            <div className="mb-12">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-slate-900">Client Workspaces</h2>
+                <span className="text-sm text-slate-600">{clients.length} client{clients.length > 1 ? 's' : ''}</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {clients.map((client) => (
+                  <Link
+                    key={client.id}
+                    to={`/client/${client.slug}/dashboard`}
+                    className="group relative bg-white rounded-2xl p-6 border-2 border-slate-200 hover:border-indigo-400 transition-all hover:-translate-y-1 hover:shadow-xl overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 via-purple-500/5 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                    <div className="relative">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                          🎓
+                        </div>
+                        <div className="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                          Active
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                        {client.business_name}
+                      </h3>
+                      <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                        {client.tagline || client.industry}
+                      </p>
+
+                      <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+                        <span className="text-sm text-slate-500">View Workspace</span>
+                        <ArrowRight className="w-5 h-5 text-indigo-600 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           )}
