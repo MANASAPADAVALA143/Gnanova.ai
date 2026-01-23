@@ -27,7 +27,21 @@ The `dist/` folder contains your production-ready files.
 
 ## 📦 Deployment
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions to Hostinger.
+### Deploy to Vercel (Recommended - Easiest)
+
+1. Push your code to GitHub (already done!)
+2. Go to [vercel.com](https://vercel.com) and sign in with GitHub
+3. Click "Add New Project" → Import your repository
+4. Add environment variables:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+5. Click "Deploy" - Done! 🚀
+
+See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for detailed Vercel deployment guide.
+
+### Deploy to Hostinger
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) or [HOSTINGER_DEPLOYMENT.md](./HOSTINGER_DEPLOYMENT.md) for detailed Hostinger deployment instructions.
 
 **Quick deployment steps:**
 1. Run `npm run build`
