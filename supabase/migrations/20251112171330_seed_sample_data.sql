@@ -1,5 +1,5 @@
 /*
-  # Seed Sample Data for Gnanova.ai
+  # Seed Sample Data for Gnanova.pro
 
   ## Purpose
   This migration seeds the database with sample data for development and testing.

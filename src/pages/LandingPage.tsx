@@ -47,8 +47,8 @@ export const LandingPage = () => {
 
   const stats = [
     { value: '100+', label: 'Hours Saved Monthly' },
-    { value: '500+', label: 'AI Solutions Deployed' },
-    { value: '3x', label: 'Avg ROI Increase' },
+    { value: '50+', label: 'Trusted Businesses' },
+    { value: '5+', label: 'Industries Served' },
     { value: '24/7', label: 'AI Agent Availability' },
   ];
 
@@ -69,7 +69,7 @@ export const LandingPage = () => {
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-                Gnanova.ai
+                Gnanova.pro
               </span>
             </div>
 
@@ -294,9 +294,9 @@ export const LandingPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'Rajesh Kumar', role: 'CEO', company: 'EdTech Innovations', rating: 5, text: 'Gnanova.ai built custom AI agents that handle 80% of our customer queries. We\'ve reclaimed countless hours and our response time went from hours to seconds!' },
-              { name: 'Priya Sharma', role: 'Marketing Head', company: 'E-Commerce Pro', rating: 5, text: 'Their AI video creation and social content automation delivered a 4x ROI in just 3 months. Exceptional quality, unmatched efficiency.' },
-              { name: 'Amit Patel', role: 'Operations Director', company: 'FinTech Solutions', rating: 5, text: 'The n8n automation workflows they designed eliminated 100+ hours of manual work monthly. This is what true digital transformation looks like.' },
+              { role: 'CEO', company: 'EdTech Company', rating: 5, text: 'Gnanova.pro built custom AI agents that handle 80% of our customer queries. We\'ve reclaimed countless hours and our response time went from hours to seconds!' },
+              { role: 'Marketing Head', company: 'E-Commerce Company', rating: 5, text: 'Their AI video creation and social content automation delivered a 4x ROI in just 3 months. Exceptional quality, unmatched efficiency.' },
+              { role: 'Operations Director', company: 'FinTech Company', rating: 5, text: 'The n8n automation workflows they designed eliminated 100+ hours of manual work monthly. This is what true digital transformation looks like.' },
             ].map((testimonial, idx) => (
               <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-2">
                 <div className="flex gap-1 mb-4">
@@ -307,11 +307,11 @@ export const LandingPage = () => {
                 <p className="text-gray-300 mb-6 leading-relaxed">{testimonial.text}</p>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center font-bold">
-                    {testimonial.name.charAt(0)}
+                    {testimonial.role.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-gray-400">{testimonial.role} at {testimonial.company}</div>
+                    <div className="font-semibold">{testimonial.role}</div>
+                    <div className="text-sm text-gray-400">at {testimonial.company}</div>
                   </div>
                 </div>
               </div>
@@ -362,7 +362,7 @@ export const LandingPage = () => {
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent">
-                Gnanova.ai
+                Gnanova.pro
               </span>
             </div>
 
@@ -373,7 +373,7 @@ export const LandingPage = () => {
             </div>
 
             <div className="text-sm text-gray-400">
-              © 2025 Gnanova.ai. All rights reserved.
+              © 2025 Gnanova.pro. All rights reserved.
             </div>
           </div>
         </div>

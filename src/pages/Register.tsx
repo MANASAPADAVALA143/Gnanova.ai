@@ -93,7 +93,7 @@ export const Register = () => {
               <Sparkles className="w-7 h-7 text-white" />
             </div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-              Gnanova.ai
+              Gnanova.pro
             </h1>
           </div>
           <p className="text-xl text-gray-400">AI-Powered Marketing Automation</p>

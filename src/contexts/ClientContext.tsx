@@ -56,6 +56,13 @@ export const ClientProvider = ({ children }: ClientProviderProps) => {
 
   const fetchClients = async () => {
     try {
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      if (!supabaseUrl || supabaseUrl === 'your_supabase_project_url') {
+        // Supabase not configured, skip fetching
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       const { data, error } = await supabase
         .from('clients')

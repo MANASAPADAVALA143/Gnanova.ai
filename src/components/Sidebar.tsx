@@ -57,7 +57,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 G
               </div>
               <span className="ml-3 text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Gnanova.ai
+                Gnanova.pro
               </span>
             </Link>
             <button onClick={onClose} className="lg:hidden text-slate-500 hover:text-slate-700">

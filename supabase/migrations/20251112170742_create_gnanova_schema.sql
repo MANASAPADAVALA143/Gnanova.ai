@@ -1,8 +1,8 @@
 /*
-  # Gnanova.ai Platform Database Schema
+  # Gnanova.pro Platform Database Schema
 
   ## Overview
-  This migration creates the complete database schema for the Gnanova.ai AI marketing agency platform.
+  This migration creates the complete database schema for the Gnanova.pro AI marketing agency platform.
 
   ## Tables Created
 
