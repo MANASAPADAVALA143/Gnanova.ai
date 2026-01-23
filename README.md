@@ -76,10 +76,29 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 ## 🔧 Development Workflow
 
+### Recommended: Cursor → GitHub → Vercel (Auto-Deploy)
+
+1. **Make changes in Cursor** - Edit your code
+2. **Test locally:** `npm run dev` (visit `http://localhost:5173`)
+3. **Push to GitHub:**
+   ```bash
+   git add .
+   git commit -m "Your changes"
+   git push
+   ```
+4. **Vercel auto-deploys** - Automatically builds and deploys your changes! 🚀
+5. **Share Vercel URL** with Hostinger
+
+**No manual builds or uploads needed!**
+
+### Alternative: Deploy to Hostinger
+
 1. Make changes in Cursor
-2. Test locally at `http://localhost:5173`
-3. Build with `npm run build`
-4. Deploy `dist/` folder to Hostinger
+2. Test locally: `npm run dev`
+3. Build: `npm run build`
+4. Upload `dist/` folder to Hostinger
+
+See [WORKFLOW.md](./WORKFLOW.md) for detailed workflow options.
 
 ## 📄 License
 

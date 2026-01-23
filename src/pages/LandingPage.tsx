@@ -62,9 +62,9 @@ export const LandingPage = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto pl-2 pr-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
