@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Zap, Target, TrendingUp, CheckCircle2, ArrowRight, Play, Star, Users, Calendar, BarChart3, Brain, Rocket, Shield, Clock, Video, MessageCircle, Workflow, Bot, Cpu, Wand2 } from 'lucide-react';
+import { Sparkles, Zap, Target, CheckCircle2, ArrowRight, Play, Star, Users, BarChart3, Brain, Rocket, Shield, MessageCircle, Workflow } from 'lucide-react';
 
 export const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -14,49 +14,49 @@ export const LandingPage = () => {
 
   const features = [
     {
-      icon: Video,
-      title: 'AI Video Creation',
-      description: 'Generate stunning videos that captivate your audience and amplify your message across every platform',
+      icon: BarChart3,
+      title: 'FinReportAI',
+      description: 'IFRS 15 & 16 automation, journal entry anomaly detection, FP&A dashboards, and CFO-ready reports. Built for CA firms and finance teams.',
       color: 'from-[#667eea] to-[#764ba2]',
     },
     {
-      icon: Bot,
-      title: 'Intelligent AI Agents',
-      description: 'Deploy smart conversational agents on WhatsApp, websites, and beyond to automate customer interactions',
+      icon: Workflow,
+      title: 'InvoiceFlow',
+      description: 'End-to-end AP automation with OCR, 3-way matching, GST compliance, and duplicate detection. Zero manual data entry.',
       color: 'from-[#f093fb] to-[#f5576c]',
     },
     {
-      icon: Workflow,
-      title: 'Automation Workflows',
-      description: 'Build sophisticated n8n automation systems that eliminate repetitive tasks and supercharge productivity',
+      icon: Users,
+      title: 'CPA OS',
+      description: 'Practice management for CA firms. Automates client onboarding, document chasing via WhatsApp, and tax workflows.',
       color: 'from-[#4facfe] to-[#00f2fe]',
     },
     {
-      icon: Wand2,
-      title: 'Social Media AI Content',
-      description: 'Craft scroll-stopping social content that resonates, engages, and converts at scale',
+      icon: MessageCircle,
+      title: 'ReceptAI',
+      description: 'AI voice agents for dental, legal, HVAC, medical spa, chiropractic, veterinary, and orthodontics. Handles inbound calls and reactivation outreach 24/7.',
       color: 'from-[#43e97b] to-[#38f9d7]',
     },
     {
-      icon: Cpu,
-      title: 'Custom AI Development',
-      description: 'Tailored AI solutions engineered specifically for your unique business challenges and opportunities',
+      icon: Shield,
+      title: 'LegalMind AI',
+      description: 'Contract review and legal research AI trained on UAE, DIFC, and Indian law. Flags risk clauses and generates structured legal summaries.',
       color: 'from-[#fa709a] to-[#fee140]',
     },
   ];
 
   const stats = [
-    { value: '100+', label: 'Hours Saved Monthly' },
-    { value: '50+', label: 'Trusted Businesses' },
-    { value: '5+', label: 'Industries Served' },
-    { value: '24/7', label: 'AI Agent Availability' },
+    { value: '5', label: 'AI Products Live' },
+    { value: '7', label: 'Industries Covered' },
+    { value: '12+', label: 'Years Finance Expertise' },
+    { value: '24/7', label: 'Voice AI Availability' },
   ];
 
   const benefits = [
-    { icon: Clock, title: 'Reclaim 100+ Hours Every Month', description: 'Automate workflows, content creation, and customer interactions while you focus on growth' },
-    { icon: TrendingUp, title: 'Multiply Your Output by 10x', description: 'AI-powered efficiency that transforms how fast you can scale and deliver value' },
-    { icon: Target, title: 'Precision-Engineered Solutions', description: 'Custom AI products built specifically for your brand, audience, and business objectives' },
-    { icon: Shield, title: 'Future-Proof Technology', description: 'Cutting-edge AI infrastructure that evolves with emerging trends and innovations' },
+    { icon: Users, title: 'Built by Finance Experts', description: 'Designed by a CMA with 12+ years at Barclays and HSBC. We understand the real problems, not just the tech.' },
+    { icon: Brain, title: 'ML + AI, Not Just Prompting', description: "Our finance products use Isolation Forest, SHAP, and Benford's Law — not generic LLM outputs. Accurate, auditable, explainable." },
+    { icon: Shield, title: 'CA Standards Compliant', description: 'Client data never leaves your system. Our privacy layer ensures ICAI compliance for every CA firm deployment.' },
+    { icon: Workflow, title: 'Integration-First', description: 'Works on top of your existing ERP, Tally, Zoho, or Oracle setup. No rip-and-replace needed.' },
   ];
 
   return (
@@ -74,9 +74,9 @@ export const LandingPage = () => {
             </div>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-              <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Benefits</a>
-              <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
+              <a href="#features" className="text-gray-300 hover:text-white transition-colors">Products</a>
+              <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Who We Help</a>
+              <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
             </div>
 
             <div className="flex items-center gap-4">
@@ -130,21 +130,21 @@ export const LandingPage = () => {
         <div className="relative max-w-6xl mx-auto text-center z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 animate-slideDown">
             <Sparkles className="w-4 h-4 text-[#667eea]" />
-            <span className="text-sm text-gray-300">Universal AI Agency - Your Growth Partner</span>
+            <span className="text-sm text-gray-300">Finance · Legal · Healthcare AI</span>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-slideUp">
             <span className="bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent">
-              Transform Your Business
+              Purpose-Built AI Products for
             </span>
             <br />
             <span className="bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#4facfe] bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-              With AI Excellence
+              Finance, Legal & Healthcare
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto animate-slideUp" style={{ animationDelay: '0.2s' }}>
-            Build AI-powered videos, intelligent agents, custom automations, and workflows that amplify your brand and reclaim 100+ hours monthly.
+            From IFRS reporting and journal entry anomaly detection to voice AI agents and legal automation — we build AI that solves real industry problems.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slideUp" style={{ animationDelay: '0.4s' }}>
@@ -152,12 +152,12 @@ export const LandingPage = () => {
               to="/register"
               className="group px-8 py-4 bg-gradient-to-r from-[#667eea] to-[#764ba2] rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-[#667eea]/40 transition-all hover:-translate-y-1 flex items-center gap-2"
             >
-              Start Free Trial
+              Explore Products
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <button className="group px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all flex items-center gap-2">
               <Play className="w-5 h-5" />
-              Watch Demo
+              Book a Demo
             </button>
           </div>
 
@@ -185,7 +185,7 @@ export const LandingPage = () => {
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6">
               <Zap className="w-4 h-4 text-[#f093fb]" />
-              <span className="text-sm text-gray-300">Comprehensive AI Arsenal</span>
+              <span className="text-sm text-gray-300">Our Products</span>
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               AI Products & Agents
@@ -195,7 +195,7 @@ export const LandingPage = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              From intelligent video creation to conversational WhatsApp bots, we engineer AI solutions that deliver measurable business growth
+              Purpose-built AI for finance professionals, CA firms, and service businesses
             </p>
           </div>
 
@@ -228,7 +228,7 @@ export const LandingPage = () => {
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6">
                 <Target className="w-4 h-4 text-[#4facfe]" />
-                <span className="text-sm text-gray-300">The Gnanova Advantage</span>
+                <span className="text-sm text-gray-300">Why Gnanova</span>
               </div>
               <h2 className="text-5xl font-bold mb-6">
                 Experience AI That
@@ -294,9 +294,9 @@ export const LandingPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { role: 'CEO', company: 'EdTech Company', rating: 5, text: 'Gnanova.pro built custom AI agents that handle 80% of our customer queries. We\'ve reclaimed countless hours and our response time went from hours to seconds!' },
-              { role: 'Marketing Head', company: 'E-Commerce Company', rating: 5, text: 'Their AI video creation and social content automation delivered a 4x ROI in just 3 months. Exceptional quality, unmatched efficiency.' },
-              { role: 'Operations Director', company: 'FinTech Company', rating: 5, text: 'The n8n automation workflows they designed eliminated 100+ hours of manual work monthly. This is what true digital transformation looks like.' },
+              { role: 'CA Firm Partner', company: 'Hyderabad', rating: 5, text: 'Gnanova.pro deployed IFRS reporting automation and journal entry anomaly detection across our audit practice. We\'ve reclaimed countless hours and our close cycle went from weeks to days.' },
+              { role: 'CFO', company: 'Manufacturing Company', rating: 5, text: 'Their FinReportAI FP&A dashboards and anomaly detection delivered measurable ROI in just 3 months. Accurate, auditable, and built for how finance teams actually work.' },
+              { role: 'Managing Partner', company: 'Law Firm', rating: 5, text: 'LegalMind AI and ReceptAI eliminated 100+ hours of manual contract review and client intake monthly. This is what true digital transformation looks like for legal practices.' },
             ].map((testimonial, idx) => (
               <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-2">
                 <div className="flex gap-1 mb-4">
@@ -331,10 +331,10 @@ export const LandingPage = () => {
         <div className="relative max-w-4xl mx-auto text-center">
           <Rocket className="w-20 h-20 text-white mx-auto mb-8" />
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Ready to Unleash AI Superpowers?
+            Ready to See Your Product Live?
           </h2>
           <p className="text-xl text-white/90 mb-12">
-            Partner with us to build AI products, agents, and automations that revolutionize how you work and win
+            Book a demo of FinReportAI, ReceptAI, or any of our products on your actual data.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -342,28 +342,31 @@ export const LandingPage = () => {
               to="/register"
               className="group px-10 py-5 bg-white text-[#667eea] rounded-xl font-bold text-lg hover:shadow-2xl transition-all hover:-translate-y-1 flex items-center gap-2"
             >
-              Start Free Trial
+              Book a Demo
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <button className="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
-              Schedule Demo
+              Explore Products
             </button>
           </div>
 
-          <p className="text-sm text-white/70 mt-8">No credit card required • 14-day free trial • Cancel anytime</p>
+          <p className="text-sm text-white/70 mt-8">Custom demos available for CA firms, CFOs, and legal practices</p>
         </div>
       </section>
 
-      <footer className="relative py-16 px-6 border-t border-white/10">
+      <footer id="contact" className="relative py-16 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent">
+                  Gnanova.pro
+                </span>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent">
-                Gnanova.pro
-              </span>
+              <p className="text-sm text-gray-400 pl-[52px]">Built by Manasa Padavala · ACMA · Ex-AVP Barclays & HSBC</p>
             </div>
 
             <div className="flex gap-8 text-sm text-gray-400">
