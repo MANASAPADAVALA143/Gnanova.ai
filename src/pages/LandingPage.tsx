@@ -370,10 +370,10 @@ export const LandingPage = () => {
         <div className="relative max-w-6xl mx-auto text-center z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 animate-slideDown">
             <Sparkles className="w-4 h-4 text-[#667eea]" />
-            <span className="text-sm text-gray-300">IFRS Compliance · Real Estate Finance · CA Firm AI</span>
+            <span className="text-xs text-gray-300">IFRS Compliance · Real Estate Finance · CA Firm AI</span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slideUp leading-tight">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 animate-slideUp leading-tight">
             <span className="bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent">
               Gnanova AI — AI-Powered IFRS & Finance Compliance Platform
             </span>

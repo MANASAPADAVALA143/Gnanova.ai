@@ -1,3 +1,5 @@
+const CONTACT_EMAIL = 'manusmile0587@gmail.com';
+
 type DemoRequestBody = {
   fullName: string;
   companyName: string;
@@ -55,7 +57,7 @@ export default async function handler(
       },
       body: JSON.stringify({
         from,
-        to: 'manasa@gnanova.pro',
+        to: CONTACT_EMAIL,
         subject,
         text,
       }),
@@ -68,7 +70,7 @@ export default async function handler(
     return res.status(200).json({ success: true });
   }
 
-  const formRes = await fetch('https://formsubmit.co/ajax/manasa@gnanova.pro', {
+  const formRes = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

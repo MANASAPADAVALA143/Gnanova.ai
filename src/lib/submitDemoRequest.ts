@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from './contactConfig';
+
 export type DemoRequestData = {
   fullName: string;
   companyName: string;
@@ -38,7 +40,7 @@ export async function submitDemoRequest(data: DemoRequestData): Promise<void> {
     // fall through to FormSubmit
   }
 
-  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent('manasa@gnanova.pro')}`, {
+  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

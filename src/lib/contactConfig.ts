@@ -1,4 +1,4 @@
-export const CONTACT_EMAIL = 'manasa@gnanova.pro';
+export const CONTACT_EMAIL = 'manusmile0587@gmail.com';
 
 /** WhatsApp number with country code, no + or spaces. Set VITE_WHATSAPP_NUMBER in Vercel env. */
 export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '';
