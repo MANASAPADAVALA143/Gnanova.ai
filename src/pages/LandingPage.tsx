@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDemoModal } from '../contexts/DemoModalContext';
 import {
   Sparkles,
   Zap,
@@ -199,6 +200,7 @@ const productSections: ProductSection[] = [
 
 export const LandingPage = () => {
   const [showProductsMenu, setShowProductsMenu] = useState(false);
+  const { openDemoModal } = useDemoModal();
 
   const stats = [
     { value: '3', label: 'IFRS Standards Live' },
@@ -313,7 +315,7 @@ export const LandingPage = () => {
                 )}
               </div>
               <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Who We Help</a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
+              <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
             </div>
 
             <div className="flex items-center gap-4">
@@ -323,12 +325,13 @@ export const LandingPage = () => {
               >
                 Sign In
               </Link>
-              <Link
-                to="/register"
+              <button
+                type="button"
+                onClick={openDemoModal}
                 className="px-6 py-2.5 bg-gradient-to-r from-[#667eea] to-[#764ba2] rounded-xl font-semibold hover:shadow-lg hover:shadow-[#667eea]/30 transition-all"
               >
                 Get Started
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -370,25 +373,29 @@ export const LandingPage = () => {
             <span className="text-sm text-gray-300">IFRS Compliance · Real Estate Finance · CA Firm AI</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slideUp leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slideUp leading-tight">
             <span className="bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent">
               Gnanova AI — AI-Powered IFRS & Finance Compliance Platform
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto animate-slideUp" style={{ animationDelay: '0.2s' }}>
+          <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-4xl mx-auto animate-slideUp" style={{ animationDelay: '0.2s' }}>
             Purpose-built AI for UAE real estate developers, CA firms, and finance teams. From IFRS 16 lease accounting to revenue recognition, ECL provisioning, AP automation, and UAE VAT compliance — all in one platform.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slideUp" style={{ animationDelay: '0.4s' }}>
-            <Link
-              to="/register"
+            <a
+              href="#features"
               className="group px-8 py-4 bg-gradient-to-r from-[#667eea] to-[#764ba2] rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-[#667eea]/40 transition-all hover:-translate-y-1 flex items-center gap-2"
             >
               Explore Products
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <button className="group px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all flex items-center gap-2">
+            </a>
+            <button
+              type="button"
+              onClick={openDemoModal}
+              className="group px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all flex items-center gap-2"
+            >
               <Play className="w-5 h-5" />
               Book a Demo
             </button>
@@ -479,6 +486,19 @@ export const LandingPage = () => {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-white/5 border border-white/10 rounded-2xl">
+                  <p className="text-gray-400 text-sm">
+                    Interested in {section.header.split('—')[0].trim()}? Tell us your requirements.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={openDemoModal}
+                    className="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all whitespace-nowrap"
+                  >
+                    Talk to Us
+                  </button>
                 </div>
               </div>
             ))}
@@ -602,16 +622,20 @@ export const LandingPage = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/register"
+            <button
+              type="button"
+              onClick={openDemoModal}
               className="group px-10 py-5 bg-white text-[#667eea] rounded-xl font-bold text-lg hover:shadow-2xl transition-all hover:-translate-y-1 flex items-center gap-2"
             >
               Book a Demo
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <button className="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
-              Explore Products
             </button>
+            <a
+              href="#features"
+              className="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl font-bold text-lg hover:bg-white/20 transition-all"
+            >
+              Explore Products
+            </a>
           </div>
 
           <p className="text-sm text-white/70 mt-8">Custom demos available for CA firms, CFOs, and legal practices</p>
@@ -637,7 +661,7 @@ export const LandingPage = () => {
             <div className="flex gap-8 text-sm text-gray-400">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
+              <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
             </div>
 
             <div className="text-sm text-gray-400">

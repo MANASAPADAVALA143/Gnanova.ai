@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ClientProvider } from './contexts/ClientContext';
+import { DemoModalProvider } from './contexts/DemoModalContext';
 import { LandingPage } from './pages/LandingPage';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { Contact } from './pages/Contact';
 import { Dashboard } from './pages/Dashboard';
 import { Content } from './pages/Content';
 import { ContentDetail } from './pages/ContentDetail';
@@ -15,6 +17,8 @@ import { SrikanthApprovals } from './pages/client/SrikanthApprovals';
 import { SrikanthContent } from './pages/client/SrikanthContent';
 import { ToastContainer } from './components/Toast';
 import { AIChat } from './components/AIChat';
+import { DemoRequestModal } from './components/DemoRequestModal';
+import { WhatsAppFloat } from './components/WhatsAppFloat';
 import { useToast } from './hooks/useToast';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -60,8 +64,11 @@ function AppContent() {
     <>
       <ToastContainer toasts={toast.toasts} onClose={toast.removeToast} />
       <AIChat />
+      <DemoRequestModal />
+      <WhatsAppFloat />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/contact" element={<Contact />} />
         <Route
           path="/login"
           element={
@@ -168,7 +175,9 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <ClientProvider>
-          <AppContent />
+          <DemoModalProvider>
+            <AppContent />
+          </DemoModalProvider>
         </ClientProvider>
       </AuthProvider>
     </BrowserRouter>

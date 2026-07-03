@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../hooks/useToast';
 import { Link, useNavigate } from 'react-router-dom';
-import { Loader2, Mail, Lock, Eye, EyeOff, Sparkles, CheckCircle2, Zap, TrendingUp, Users } from 'lucide-react';
+import { Loader2, Mail, Lock, Eye, EyeOff, Sparkles, CheckCircle2 } from 'lucide-react';
+
+const loginBenefits = [
+  'IFRS 16, 15 & 9 — all in one platform',
+  '97-99% AI extraction accuracy',
+  'Built for UAE real estate and CA firms',
+];
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,43 +21,13 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [stats, setStats] = useState({ posts: 0, clients: 0, uptime: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
-
-    const animateStats = () => {
-      let postsCount = 0;
-      let clientsCount = 0;
-      let uptimeCount = 0;
-
-      const interval = setInterval(() => {
-        if (postsCount < 10000) postsCount += 200;
-        if (clientsCount < 500) clientsCount += 10;
-        if (uptimeCount < 99.9) uptimeCount += 2;
-
-        setStats({
-          posts: Math.min(postsCount, 10000),
-          clients: Math.min(clientsCount, 500),
-          uptime: Math.min(uptimeCount, 99.9),
-        });
-
-        if (postsCount >= 10000 && clientsCount >= 500 && uptimeCount >= 99.9) {
-          clearInterval(interval);
-        }
-      }, 30);
-
-      return () => clearInterval(interval);
-    };
-
-    const cleanup = animateStats();
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      cleanup();
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -111,49 +87,23 @@ export const Login = () => {
               Gnanova.pro
             </h1>
           </div>
-          <p className="text-xl text-gray-400">AI-Powered Marketing Automation</p>
+          <h2 className="text-3xl font-bold text-white mb-2">Welcome to Gnanova AI</h2>
+          <p className="text-xl text-gray-400">IFRS Compliance Platform for UAE Finance Teams</p>
         </div>
 
-        <div className="relative z-10 space-y-6 animate-slideUpFadeIn" style={{ animationDelay: '0.2s' }}>
-          <div className="group">
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-[#667eea]/50 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="text-5xl font-bold mb-2 bg-gradient-to-r from-[#667eea] to-[#f093fb] bg-clip-text text-transparent">
-                {stats.posts.toLocaleString()}+
+        <div className="relative z-10 space-y-4 animate-slideUpFadeIn" style={{ animationDelay: '0.2s' }}>
+          {loginBenefits.map((benefit, idx) => (
+            <div key={idx} className="flex items-start gap-4 group">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <CheckCircle2 className="w-5 h-5 text-white" />
               </div>
-              <div className="text-gray-400 flex items-center gap-2">
-                <Zap className="w-4 h-4 text-[#667eea]" />
-                Posts Generated Daily
-              </div>
+              <p className="text-gray-300 pt-1">{benefit}</p>
             </div>
-          </div>
-
-          <div className="group">
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-[#f093fb]/50 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="text-5xl font-bold mb-2 bg-gradient-to-r from-[#f093fb] to-[#667eea] bg-clip-text text-transparent">
-                {stats.clients}+
-              </div>
-              <div className="text-gray-400 flex items-center gap-2">
-                <Users className="w-4 h-4 text-[#f093fb]" />
-                Active Clients
-              </div>
-            </div>
-          </div>
-
-          <div className="group">
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-[#4facfe]/50 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="text-5xl font-bold mb-2 bg-gradient-to-r from-[#4facfe] to-[#00f2fe] bg-clip-text text-transparent">
-                {stats.uptime.toFixed(1)}%
-              </div>
-              <div className="text-gray-400 flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-[#4facfe]" />
-                System Uptime
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="relative z-10 text-sm text-gray-500 italic animate-slideUpFadeIn" style={{ animationDelay: '0.4s' }}>
-          "The future of content is AI" ✨
+          Built for UAE real estate developers and CA firms
         </div>
       </div>
 

@@ -4,6 +4,21 @@ import { useToast } from '../hooks/useToast';
 import { Link, useNavigate } from 'react-router-dom';
 import { Loader2, Mail, Lock, User, Building2, Eye, EyeOff, Sparkles, CheckCircle2 } from 'lucide-react';
 
+const registerBenefits = [
+  {
+    title: 'Upload lease or contract PDF — AI extracts all terms',
+    color: 'from-orange-500 to-amber-600',
+  },
+  {
+    title: 'Audit-ready IFRS outputs in minutes',
+    color: 'from-[#667eea] to-[#764ba2]',
+  },
+  {
+    title: 'UAE-specific: RERA, FTA, EmaraTax compliant',
+    color: 'from-[#4facfe] to-[#00f2fe]',
+  },
+];
+
 export const Register = () => {
   const [fullName, setFullName] = useState('');
   const [businessName, setBusinessName] = useState('');
@@ -96,57 +111,23 @@ export const Register = () => {
               Gnanova.pro
             </h1>
           </div>
-          <p className="text-xl text-gray-400">AI-Powered Marketing Automation</p>
+          <h2 className="text-3xl font-bold text-white mb-2">Start with Gnanova AI</h2>
+          <p className="text-xl text-gray-400">Get access to IFRS.ai — our flagship compliance product</p>
         </div>
 
-        <div className="relative z-10 space-y-6 animate-slideUpFadeIn" style={{ animationDelay: '0.2s' }}>
-          <h3 className="text-2xl font-bold mb-6">Why Choose Gnanova?</h3>
-
-          <div className="space-y-4">
-            <div className="flex items-start gap-4 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+        <div className="relative z-10 space-y-4 animate-slideUpFadeIn" style={{ animationDelay: '0.2s' }}>
+          {registerBenefits.map((benefit, idx) => (
+            <div key={idx} className="flex items-start gap-4 group">
+              <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${benefit.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
                 <CheckCircle2 className="w-5 h-5 text-white" />
               </div>
-              <div>
-                <div className="font-semibold text-white mb-1">AI Content Generation</div>
-                <div className="text-sm text-gray-400">Generate engaging posts in seconds with advanced AI</div>
-              </div>
+              <p className="text-gray-300 pt-1">{benefit.title}</p>
             </div>
-
-            <div className="flex items-start gap-4 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#f093fb] to-[#f5576c] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <CheckCircle2 className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <div className="font-semibold text-white mb-1">Multi-Platform Publishing</div>
-                <div className="text-sm text-gray-400">Publish to Instagram, Facebook, LinkedIn & more</div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4facfe] to-[#00f2fe] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <CheckCircle2 className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <div className="font-semibold text-white mb-1">Advanced Analytics</div>
-                <div className="text-sm text-gray-400">Track performance with real-time insights</div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <CheckCircle2 className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <div className="font-semibold text-white mb-1">Brand Alignment</div>
-                <div className="text-sm text-gray-400">Content that matches your unique brand voice</div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="relative z-10 text-sm text-gray-500 animate-slideUpFadeIn" style={{ animationDelay: '0.4s' }}>
-          Join 500+ businesses automating their social media
+          IFRS compliance built for UAE finance teams
         </div>
       </div>
 
