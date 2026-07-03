@@ -1,55 +1,210 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Zap, Target, CheckCircle2, ArrowRight, Play, Star, Users, BarChart3, Brain, Rocket, Shield, MessageCircle, Workflow } from 'lucide-react';
+import {
+  Sparkles,
+  Zap,
+  Target,
+  CheckCircle2,
+  ArrowRight,
+  Play,
+  Star,
+  Users,
+  BarChart3,
+  Brain,
+  Rocket,
+  Shield,
+  MessageCircle,
+  Workflow,
+  ChevronDown,
+  Building2,
+  FileText,
+  FileSpreadsheet,
+  Bot,
+  type LucideIcon,
+} from 'lucide-react';
+
+type ProductCard = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  color: string;
+  buttonText?: string;
+  link?: string;
+  external?: boolean;
+  comingSoon?: boolean;
+  badge?: string;
+  featured?: boolean;
+  subtitle?: string;
+};
+
+type ProductSection = {
+  id: string;
+  header: string;
+  sectionBadge?: string;
+  cards: ProductCard[];
+};
+
+const productNavGroups = [
+  {
+    label: 'IFRS Compliance',
+    items: [{ name: 'IFRS.ai', href: 'https://ifrsai.vercel.app/', external: true }],
+  },
+  {
+    label: 'Finance Operations',
+    items: [
+      { name: 'FinReportAI', href: '#finance-operations' },
+      { name: 'InvoiceFlow', href: '#finance-operations' },
+    ],
+  },
+  {
+    label: 'CA Firm',
+    items: [{ name: 'CPA OS', href: '#ca-firm' }],
+  },
+  {
+    label: 'Other',
+    items: [
+      { name: 'ReceptAI', href: '#other-products' },
+      { name: 'LegalMind AI', href: '#other-products' },
+    ],
+  },
+];
+
+const productSections: ProductSection[] = [
+  {
+    id: 'ifrs-ai',
+    header: 'IFRS.ai — Core Product',
+    sectionBadge: 'Flagship · Live Now',
+    cards: [
+      {
+        icon: BarChart3,
+        title: 'IFRS.ai',
+        description:
+          'AI-powered IFRS 16 lease accounting, IFRS 15 revenue recognition, and IFRS 9 ECL provisioning. Built specifically for UAE real estate developers and CA firms. 97-99% extraction accuracy from English and Arabic contracts.',
+        color: 'from-orange-500 to-amber-600',
+        buttonText: 'Open IFRS.ai',
+        link: 'https://ifrsai.vercel.app/',
+        external: true,
+        featured: true,
+      },
+    ],
+  },
+  {
+    id: 'real-estate-finance',
+    header: 'Real Estate Finance Layer',
+    cards: [
+      {
+        icon: Building2,
+        title: 'IFRS 15 Real Estate UAE',
+        subtitle: 'inside IFRS.ai',
+        description:
+          'Off-plan SPA revenue recognition, RERA compliance, escrow tracking, FTA VAT reconciliation, and RERA deadline tracker.',
+        color: 'from-orange-500 to-amber-600',
+        buttonText: 'View in IFRS.ai',
+        link: 'https://ifrsai.vercel.app/dashboard/ifrs15/realestate',
+        external: true,
+      },
+      {
+        icon: FileText,
+        title: 'IFRS 16 Lease Management',
+        subtitle: 'inside IFRS.ai',
+        description:
+          'Lease contract management, ROU asset and liability calculation, rent schedules, renewals, and IFRS 16 compliant disclosure notes.',
+        color: 'from-orange-500 to-amber-600',
+        buttonText: 'View in IFRS.ai',
+        link: 'https://ifrsai.vercel.app/dashboard/ifrs16',
+        external: true,
+      },
+    ],
+  },
+  {
+    id: 'finance-operations',
+    header: 'Finance Operations',
+    cards: [
+      {
+        icon: BarChart3,
+        title: 'FinReportAI',
+        description:
+          'IFRS 15 & 16 automation, journal entry anomaly detection, FP&A dashboards, and CFO-ready reports. Built for CA firms and finance teams.',
+        color: 'from-[#667eea] to-[#764ba2]',
+      },
+      {
+        icon: Workflow,
+        title: 'InvoiceFlow',
+        description:
+          'End-to-end AP automation with OCR, 3-way matching, GST compliance, and duplicate detection. Zero manual data entry.',
+        color: 'from-[#f093fb] to-[#f5576c]',
+      },
+      {
+        icon: FileSpreadsheet,
+        title: 'IFRS Financial Statements',
+        description:
+          'Trial balance to full IFRS financial statements — balance sheet, P&L, cash flow (IAS 7), and group consolidation. Auto-generated disclosure notes.',
+        color: 'from-gray-500 to-gray-600',
+        buttonText: 'Coming Soon',
+        comingSoon: true,
+        badge: 'Roadmap',
+      },
+    ],
+  },
+  {
+    id: 'ai-copilot',
+    header: 'AI Copilot',
+    cards: [
+      {
+        icon: Bot,
+        title: 'Gnanova AI Copilot',
+        description:
+          'Contract intelligence, disclosure generation, financial analysis, and board reporting — powered by Claude AI and AWS Nova.',
+        color: 'from-[#667eea] to-[#4facfe]',
+        buttonText: 'Coming Soon',
+        comingSoon: true,
+        badge: 'Roadmap',
+      },
+    ],
+  },
+  {
+    id: 'ca-firm',
+    header: 'CA Firm Workspace',
+    cards: [
+      {
+        icon: Users,
+        title: 'CPA OS',
+        description:
+          'Multi-client compliance console for CA firms managing 10-20 clients. IFRS status tracking, audit packs, analytics, and compliance monitoring across your entire client portfolio.',
+        color: 'from-[#4facfe] to-[#00f2fe]',
+      },
+    ],
+  },
+  {
+    id: 'other-products',
+    header: 'Other Products',
+    cards: [
+      {
+        icon: MessageCircle,
+        title: 'ReceptAI',
+        description:
+          'AI voice agents for dental, legal, HVAC, medical spa, chiropractic, veterinary, and orthodontics. Handles inbound calls and reactivation outreach 24/7.',
+        color: 'from-[#43e97b] to-[#38f9d7]',
+      },
+      {
+        icon: Shield,
+        title: 'LegalMind AI',
+        description:
+          'Contract review and legal research AI trained on UAE, DIFC, and Indian law. Flags risk clauses and generates structured legal summaries.',
+        color: 'from-[#fa709a] to-[#fee140]',
+      },
+    ],
+  },
+];
 
 export const LandingPage = () => {
-  const [activeFeature, setActiveFeature] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const features = [
-    {
-      icon: BarChart3,
-      title: 'FinReportAI',
-      description: 'IFRS 15 & 16 automation, journal entry anomaly detection, FP&A dashboards, and CFO-ready reports. Built for CA firms and finance teams.',
-      color: 'from-[#667eea] to-[#764ba2]',
-    },
-    {
-      icon: Workflow,
-      title: 'InvoiceFlow',
-      description: 'End-to-end AP automation with OCR, 3-way matching, GST compliance, and duplicate detection. Zero manual data entry.',
-      color: 'from-[#f093fb] to-[#f5576c]',
-    },
-    {
-      icon: Users,
-      title: 'CPA OS',
-      description: 'Practice management for CA firms. Automates client onboarding, document chasing via WhatsApp, and tax workflows.',
-      color: 'from-[#4facfe] to-[#00f2fe]',
-    },
-    {
-      icon: MessageCircle,
-      title: 'ReceptAI',
-      description: 'AI voice agents for dental, legal, HVAC, medical spa, chiropractic, veterinary, and orthodontics. Handles inbound calls and reactivation outreach 24/7.',
-      color: 'from-[#43e97b] to-[#38f9d7]',
-    },
-    {
-      icon: Shield,
-      title: 'LegalMind AI',
-      description: 'Contract review and legal research AI trained on UAE, DIFC, and Indian law. Flags risk clauses and generates structured legal summaries.',
-      color: 'from-[#fa709a] to-[#fee140]',
-    },
-  ];
+  const [showProductsMenu, setShowProductsMenu] = useState(false);
 
   const stats = [
-    { value: '5', label: 'AI Products Live' },
-    { value: '7', label: 'Industries Covered' },
+    { value: '3', label: 'IFRS Standards Live' },
+    { value: '97-99%', label: 'AI Extraction Accuracy' },
     { value: '12+', label: 'Years Finance Expertise' },
-    { value: '24/7', label: 'Voice AI Availability' },
+    { value: 'UAE', label: 'Real Estate Focused' },
   ];
 
   const benefits = [
@@ -58,6 +213,41 @@ export const LandingPage = () => {
     { icon: Shield, title: 'CA Standards Compliant', description: 'Client data never leaves your system. Our privacy layer ensures ICAI compliance for every CA firm deployment.' },
     { icon: Workflow, title: 'Integration-First', description: 'Works on top of your existing ERP, Tally, Zoho, or Oracle setup. No rip-and-replace needed.' },
   ];
+
+  const renderProductButton = (card: ProductCard) => {
+    if (!card.buttonText) return null;
+
+    const buttonClass = card.comingSoon
+      ? 'inline-flex items-center gap-2 px-5 py-2.5 mt-6 bg-white/5 border border-white/10 rounded-xl text-sm font-semibold text-gray-500 cursor-not-allowed'
+      : card.featured
+        ? 'inline-flex items-center gap-2 px-5 py-2.5 mt-6 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all group/btn'
+        : 'inline-flex items-center gap-2 px-5 py-2.5 mt-6 bg-white/10 border border-white/10 rounded-xl text-sm font-semibold hover:bg-white/20 transition-all group/btn';
+
+    if (card.comingSoon) {
+      return <span className={buttonClass}>{card.buttonText}</span>;
+    }
+
+    if (card.external && card.link) {
+      return (
+        <a
+          href={card.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonClass}
+        >
+          {card.buttonText}
+          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+        </a>
+      );
+    }
+
+    return (
+      <Link to={card.link || '#'} className={buttonClass}>
+        {card.buttonText}
+        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+      </Link>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
@@ -74,7 +264,54 @@ export const LandingPage = () => {
             </div>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors">Products</a>
+              <div
+                className="relative"
+                onMouseEnter={() => setShowProductsMenu(true)}
+                onMouseLeave={() => setShowProductsMenu(false)}
+              >
+                <button
+                  className="flex items-center gap-1 text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setShowProductsMenu(!showProductsMenu)}
+                >
+                  Products
+                  <ChevronDown className={`w-4 h-4 transition-transform ${showProductsMenu ? 'rotate-180' : ''}`} />
+                </button>
+
+                {showProductsMenu && (
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-[#141414] border border-white/10 rounded-xl shadow-2xl py-3 z-50">
+                    {productNavGroups.map((group, groupIdx) => (
+                      <div key={group.label} className={groupIdx > 0 ? 'mt-2 pt-2 border-t border-white/10' : ''}>
+                        <div className="px-4 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                          {group.label}
+                        </div>
+                        {group.items.map((item) =>
+                          item.external ? (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                              onClick={() => setShowProductsMenu(false)}
+                            >
+                              {item.name}
+                            </a>
+                          ) : (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                              onClick={() => setShowProductsMenu(false)}
+                            >
+                              {item.name}
+                            </a>
+                          )
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
               <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Who We Help</a>
               <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
             </div>
@@ -130,21 +367,17 @@ export const LandingPage = () => {
         <div className="relative max-w-6xl mx-auto text-center z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-8 animate-slideDown">
             <Sparkles className="w-4 h-4 text-[#667eea]" />
-            <span className="text-sm text-gray-300">Finance · Legal · Healthcare AI</span>
+            <span className="text-sm text-gray-300">IFRS Compliance · Real Estate Finance · CA Firm AI</span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-slideUp">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slideUp leading-tight">
             <span className="bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent">
-              Purpose-Built AI Products for
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#4facfe] bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-              Finance, Legal & Healthcare
+              Gnanova AI — AI-Powered IFRS & Finance Compliance Platform
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto animate-slideUp" style={{ animationDelay: '0.2s' }}>
-            From IFRS reporting and journal entry anomaly detection to voice AI agents and legal automation — we build AI that solves real industry problems.
+          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto animate-slideUp" style={{ animationDelay: '0.2s' }}>
+            Purpose-built AI for UAE real estate developers, CA firms, and finance teams. From IFRS 16 lease accounting to revenue recognition, ECL provisioning, AP automation, and UAE VAT compliance — all in one platform.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slideUp" style={{ animationDelay: '0.4s' }}>
@@ -195,26 +428,57 @@ export const LandingPage = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Purpose-built AI for finance professionals, CA firms, and service businesses
+              Purpose-built AI for finance professionals, CA firms, legal and healthcare practices, and real estate teams
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, idx) => (
-              <div
-                key={idx}
-                className="group relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-2 cursor-pointer overflow-hidden"
-                onMouseEnter={() => setActiveFeature(idx)}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+          <div className="space-y-20">
+            {productSections.map((section) => (
+              <div key={section.id} id={section.id}>
+                <div className="flex flex-wrap items-center gap-3 mb-8">
+                  <h3 className="text-2xl md:text-3xl font-bold">{section.header}</h3>
+                  {section.sectionBadge && (
+                    <span className="px-3 py-1 text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full">
+                      {section.sectionBadge}
+                    </span>
+                  )}
+                </div>
 
-                <div className="relative">
-                  <div className={`inline-flex p-4 bg-gradient-to-br ${feature.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform`}>
-                    <feature.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
+                <div className={`grid gap-8 ${section.cards.length === 1 ? 'md:grid-cols-1 max-w-2xl' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
+                  {section.cards.map((card) => (
+                    <div
+                      key={card.title}
+                      className={`group relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border transition-all hover:-translate-y-2 overflow-hidden ${
+                        card.featured
+                          ? 'border-orange-500/50 hover:border-orange-500/70 hover:shadow-lg hover:shadow-orange-500/10'
+                          : card.comingSoon
+                            ? 'border-white/5 opacity-80'
+                            : 'border-white/10 hover:bg-white/10'
+                      }`}
+                    >
+                      <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+
+                      <div className="relative">
+                        {card.badge && (
+                          <span className="inline-block px-2.5 py-1 mb-4 text-xs font-semibold bg-gray-500/20 text-gray-400 border border-gray-500/30 rounded-full">
+                            {card.badge}
+                          </span>
+                        )}
+                        <div className={`inline-flex p-4 bg-gradient-to-br ${card.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform`}>
+                          <card.icon className="w-8 h-8 text-white" />
+                        </div>
+                        <h4 className="text-2xl font-bold mb-1">
+                          {card.title}
+                          {card.subtitle && (
+                            <span className="text-sm font-normal text-gray-500 ml-2">({card.subtitle})</span>
+                          )}
+                        </h4>
+                        <p className="text-gray-400">{card.description}</p>
+                        {renderProductButton(card)}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -366,7 +630,8 @@ export const LandingPage = () => {
                   Gnanova.pro
                 </span>
               </div>
-              <p className="text-sm text-gray-400 pl-[52px]">Built by Manasa Padavala · ACMA · Ex-AVP Barclays & HSBC</p>
+              <p className="text-sm text-gray-400 pl-[52px]">Gnanova AI — IFRS Compliance Platform for UAE</p>
+              <p className="text-sm text-gray-400 pl-[52px]">Built by Manasa Padavala · ACCA · Ex-AVP Barclays & HSBC</p>
             </div>
 
             <div className="flex gap-8 text-sm text-gray-400">
