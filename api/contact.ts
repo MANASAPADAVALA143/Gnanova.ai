@@ -19,7 +19,7 @@ function formatEmailText(data: DemoRequestBody): string {
     '',
     `Full Name: ${data.fullName}`,
     `Company: ${data.companyName}`,
-    `Email: ${data.email}`,
+    `Email Address: ${data.email}`,
     `WhatsApp: ${data.whatsapp}`,
     `Country: ${data.country}`,
     `Role: ${data.role}`,
@@ -45,7 +45,7 @@ export default async function handler(
   }
 
   const text = formatEmailText(data);
-  const subject = `Demo Request: ${data.fullName} — ${data.companyName}`;
+  const subject = `Demo Request: ${data.fullName} (${data.email}) — ${data.companyName}`;
 
   if (process.env.RESEND_API_KEY) {
     const from = process.env.RESEND_FROM || 'Gnanova <onboarding@resend.dev>';
@@ -58,6 +58,7 @@ export default async function handler(
       body: JSON.stringify({
         from,
         to: CONTACT_EMAIL,
+        reply_to: data.email,
         subject,
         text,
       }),
@@ -79,7 +80,19 @@ export default async function handler(
     body: JSON.stringify({
       _subject: subject,
       _template: 'table',
-      ...data,
+      _replyto: data.email,
+      email: data.email,
+      name: data.fullName,
+      'Full Name': data.fullName,
+      'Company Name': data.companyName,
+      'Email Address': data.email,
+      WhatsApp: data.whatsapp,
+      Country: data.country,
+      Role: data.role,
+      'Product Interest': data.productInterest,
+      'Pain Point': data.painPoint,
+      'Preferred Contact': data.contactMethod,
+      'Best Time': data.bestTime,
     }),
   });
 

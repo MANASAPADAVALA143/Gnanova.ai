@@ -15,10 +15,14 @@ export type DemoRequestData = {
 
 export async function submitDemoRequest(data: DemoRequestData): Promise<void> {
   const payload = {
-    _subject: `Demo Request: ${data.fullName} — ${data.companyName}`,
+    _subject: `Demo Request: ${data.fullName} (${data.email}) — ${data.companyName}`,
     _template: 'table',
+    _replyto: data.email,
+    email: data.email,
+    name: data.fullName,
     'Full Name': data.fullName,
     'Company Name': data.companyName,
+    'Email Address': data.email,
     Email: data.email,
     WhatsApp: data.whatsapp,
     Country: data.country,

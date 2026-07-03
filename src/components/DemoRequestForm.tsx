@@ -111,7 +111,7 @@ export const DemoRequestForm = ({ compact = false, onSuccess }: DemoRequestFormP
           />
         </div>
         <div>
-          <label htmlFor="demo-email" className={labelClass}>Email *</label>
+          <label htmlFor="demo-email" className={labelClass}>Your Email Address *</label>
           <input
             id="demo-email"
             type="email"
@@ -120,6 +120,7 @@ export const DemoRequestForm = ({ compact = false, onSuccess }: DemoRequestFormP
             onChange={(e) => update('email', e.target.value)}
             className={inputClass}
             placeholder="you@company.com"
+            autoComplete="email"
           />
         </div>
         <div>
