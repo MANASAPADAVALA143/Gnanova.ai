@@ -119,17 +119,20 @@ CREATE TABLE IF NOT EXISTS profiles (
 
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Users can view own profile" ON profiles;
 CREATE POLICY "Users can view own profile"
   ON profiles FOR SELECT
   TO authenticated
   USING (auth.uid() = id);
 
+DROP POLICY IF EXISTS "Users can update own profile" ON profiles;
 CREATE POLICY "Users can update own profile"
   ON profiles FOR UPDATE
   TO authenticated
   USING (auth.uid() = id)
   WITH CHECK (auth.uid() = id);
 
+DROP POLICY IF EXISTS "Users can insert own profile" ON profiles;
 CREATE POLICY "Users can insert own profile"
   ON profiles FOR INSERT
   TO authenticated
@@ -160,6 +163,7 @@ CREATE TABLE IF NOT EXISTS clients (
 
 ALTER TABLE clients ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Clients can view own data" ON clients;
 CREATE POLICY "Clients can view own data"
   ON clients FOR SELECT
   TO authenticated
@@ -168,11 +172,13 @@ CREATE POLICY "Clients can view own data"
     EXISTS (SELECT 1 FROM profiles WHERE profiles.id = auth.uid() AND profiles.role = 'agency')
   );
 
+DROP POLICY IF EXISTS "Agency can insert clients" ON clients;
 CREATE POLICY "Agency can insert clients"
   ON clients FOR INSERT
   TO authenticated
   WITH CHECK (EXISTS (SELECT 1 FROM profiles WHERE profiles.id = auth.uid() AND profiles.role = 'agency'));
 
+DROP POLICY IF EXISTS "Clients and agency can update" ON clients;
 CREATE POLICY "Clients and agency can update"
   ON clients FOR UPDATE
   TO authenticated
@@ -203,6 +209,7 @@ CREATE TABLE IF NOT EXISTS content_items (
 
 ALTER TABLE content_items ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "View content based on client access" ON content_items;
 CREATE POLICY "View content based on client access"
   ON content_items FOR SELECT
   TO authenticated
@@ -214,11 +221,13 @@ CREATE POLICY "View content based on client access"
     )
   );
 
+DROP POLICY IF EXISTS "Agency can insert content" ON content_items;
 CREATE POLICY "Agency can insert content"
   ON content_items FOR INSERT
   TO authenticated
   WITH CHECK (EXISTS (SELECT 1 FROM profiles WHERE profiles.id = auth.uid() AND profiles.role = 'agency'));
 
+DROP POLICY IF EXISTS "Update content based on access" ON content_items;
 CREATE POLICY "Update content based on access"
   ON content_items FOR UPDATE
   TO authenticated
@@ -255,6 +264,7 @@ CREATE TABLE IF NOT EXISTS platform_connections (
 
 ALTER TABLE platform_connections ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "View platforms based on client access" ON platform_connections;
 CREATE POLICY "View platforms based on client access"
   ON platform_connections FOR SELECT
   TO authenticated
@@ -266,6 +276,7 @@ CREATE POLICY "View platforms based on client access"
     )
   );
 
+DROP POLICY IF EXISTS "Update platforms based on access" ON platform_connections;
 CREATE POLICY "Update platforms based on access"
   ON platform_connections FOR UPDATE
   TO authenticated
@@ -284,6 +295,7 @@ CREATE POLICY "Update platforms based on access"
     )
   );
 
+DROP POLICY IF EXISTS "Insert platforms based on access" ON platform_connections;
 CREATE POLICY "Insert platforms based on access"
   ON platform_connections FOR INSERT
   TO authenticated
@@ -311,6 +323,7 @@ CREATE TABLE IF NOT EXISTS analytics (
 
 ALTER TABLE analytics ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "View analytics based on content access" ON analytics;
 CREATE POLICY "View analytics based on content access"
   ON analytics FOR SELECT
   TO authenticated
@@ -339,6 +352,7 @@ CREATE TABLE IF NOT EXISTS brand_preferences (
 
 ALTER TABLE brand_preferences ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "View preferences based on client access" ON brand_preferences;
 CREATE POLICY "View preferences based on client access"
   ON brand_preferences FOR SELECT
   TO authenticated
@@ -350,6 +364,7 @@ CREATE POLICY "View preferences based on client access"
     )
   );
 
+DROP POLICY IF EXISTS "Update preferences based on access" ON brand_preferences;
 CREATE POLICY "Update preferences based on access"
   ON brand_preferences FOR UPDATE
   TO authenticated
@@ -368,6 +383,7 @@ CREATE POLICY "Update preferences based on access"
     )
   );
 
+DROP POLICY IF EXISTS "Insert preferences based on access" ON brand_preferences;
 CREATE POLICY "Insert preferences based on access"
   ON brand_preferences FOR INSERT
   TO authenticated
@@ -391,6 +407,7 @@ CREATE TABLE IF NOT EXISTS activity_log (
 
 ALTER TABLE activity_log ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "View activity based on client access" ON activity_log;
 CREATE POLICY "View activity based on client access"
   ON activity_log FOR SELECT
   TO authenticated
@@ -402,6 +419,7 @@ CREATE POLICY "View activity based on client access"
     )
   );
 
+DROP POLICY IF EXISTS "Insert activity" ON activity_log;
 CREATE POLICY "Insert activity"
   ON activity_log FOR INSERT
   TO authenticated

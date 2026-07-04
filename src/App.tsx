@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { ClientProvider } from './contexts/ClientContext';
 import { DemoModalProvider } from './contexts/DemoModalContext';
 import { LandingPage } from './pages/LandingPage';
 import { Login } from './pages/Login';
@@ -12,9 +11,6 @@ import { ContentDetail } from './pages/ContentDetail';
 import { Calendar } from './pages/Calendar';
 import { Analytics } from './pages/Analytics';
 import { Settings } from './pages/Settings';
-import { SrikanthDashboard } from './pages/client/SrikanthDashboard';
-import { SrikanthApprovals } from './pages/client/SrikanthApprovals';
-import { SrikanthContent } from './pages/client/SrikanthContent';
 import { ToastContainer } from './components/Toast';
 import { AIChat } from './components/AIChat';
 import { DemoRequestModal } from './components/DemoRequestModal';
@@ -133,38 +129,6 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/client/srikanth-academy/dashboard"
-          element={
-            <ProtectedRoute>
-              <SrikanthDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/client/srikanth-academy/approvals"
-          element={
-            <ProtectedRoute>
-              <SrikanthApprovals />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/client/srikanth-academy/content"
-          element={
-            <ProtectedRoute>
-              <SrikanthContent />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/client/srikanth-academy/*"
-          element={
-            <ProtectedRoute>
-              <SrikanthDashboard />
-            </ProtectedRoute>
-          }
-        />
       </Routes>
     </>
   );
@@ -174,11 +138,9 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <ClientProvider>
-          <DemoModalProvider>
-            <AppContent />
-          </DemoModalProvider>
-        </ClientProvider>
+        <DemoModalProvider>
+          <AppContent />
+        </DemoModalProvider>
       </AuthProvider>
     </BrowserRouter>
   );
