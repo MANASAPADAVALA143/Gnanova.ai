@@ -5,35 +5,60 @@ type GnanovaLogoProps = {
   height?: number;
   className?: string;
   linkTo?: string;
+  showWordmark?: boolean;
 };
 
-export const GnanovaLogo = ({ height = 36, className = '', linkTo = '/' }: GnanovaLogoProps) => {
-  const [imgError, setImgError] = useState(false);
+export const GnanovaLogo = ({
+  height = 40,
+  className = '',
+  linkTo = '/',
+  showWordmark = true,
+}: GnanovaLogoProps) => {
+  const [iconError, setIconError] = useState(false);
 
-  const logo = imgError ? (
+  const iconSize = Math.round(height * 0.9);
+
+  const icon = iconError ? (
     <span
-      className={`font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent ${className}`}
+      className="rounded-xl bg-gradient-to-br from-[#667eea] to-[#4facfe] flex items-center justify-center text-white text-xs font-bold"
+      style={{ width: iconSize, height: iconSize }}
+    >
+      G
+    </span>
+  ) : (
+    <img
+      src="/gnanova-ai-icon.png"
+      alt=""
+      aria-hidden="true"
+      style={{ width: iconSize, height: iconSize, background: 'transparent' }}
+      className="navbar-logo bg-transparent shrink-0"
+      onError={() => setIconError(true)}
+    />
+  );
+
+  const wordmark = showWordmark ? (
+    <span
+      className={`font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#4facfe] bg-clip-text text-transparent whitespace-nowrap ${className}`}
       style={{ fontSize: height * 0.55 }}
     >
       Gnanova AI
     </span>
-  ) : (
-    <img
-      src="/gnanova-ai-logo.png"
-      alt="Gnanova AI logo"
-      style={{ height, width: 'auto', background: 'transparent' }}
-      className={`navbar-logo bg-transparent ${className}`}
-      onError={() => setImgError(true)}
-    />
+  ) : null;
+
+  const content = (
+    <span className="inline-flex items-center gap-2.5 bg-transparent">
+      {icon}
+      {wordmark}
+    </span>
   );
 
   if (linkTo) {
     return (
-      <Link to={linkTo} className="inline-flex items-center shrink-0 bg-transparent">
-        {logo}
+      <Link to={linkTo} className="inline-flex items-center shrink-0 bg-transparent" aria-label="Gnanova AI home">
+        {content}
       </Link>
     );
   }
 
-  return logo;
+  return content;
 };
