@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDemoModal } from '../contexts/DemoModalContext';
+import { GnanovaLogo } from '../components/GnanovaLogo';
 import {
   Sparkles,
   Zap,
@@ -256,14 +257,7 @@ export const LandingPage = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto pl-2 pr-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-                Gnanova.pro
-              </span>
-            </div>
+            <GnanovaLogo height={36} />
 
             <div className="hidden md:flex items-center gap-8">
               <div
@@ -578,7 +572,7 @@ export const LandingPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { role: 'CA Firm Partner', company: 'Hyderabad', rating: 5, text: 'Gnanova.pro deployed IFRS reporting automation and journal entry anomaly detection across our audit practice. We\'ve reclaimed countless hours and our close cycle went from weeks to days.' },
+              { role: 'CA Firm Partner', company: 'Hyderabad', rating: 5, text: 'Gnanova AI deployed IFRS reporting automation and journal entry anomaly detection across our audit practice. We\'ve reclaimed countless hours and our close cycle went from weeks to days.' },
               { role: 'CFO', company: 'Manufacturing Company', rating: 5, text: 'Their FinReportAI FP&A dashboards and anomaly detection delivered measurable ROI in just 3 months. Accurate, auditable, and built for how finance teams actually work.' },
               { role: 'Managing Partner', company: 'Law Firm', rating: 5, text: 'LegalMind AI and ReceptAI eliminated 100+ hours of manual contract review and client intake monthly. This is what true digital transformation looks like for legal practices.' },
             ].map((testimonial, idx) => (
@@ -646,16 +640,9 @@ export const LandingPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent">
-                  Gnanova.pro
-                </span>
-              </div>
-              <p className="text-sm text-gray-400 pl-[52px]">Gnanova AI — IFRS Compliance Platform for UAE</p>
-              <p className="text-sm text-gray-400 pl-[52px]">Built by Manasa Padavala · ACCA · Ex-AVP Barclays & HSBC</p>
+              <GnanovaLogo height={36} linkTo="" />
+              <p className="text-sm text-gray-400">Gnanova AI — IFRS Compliance Platform for UAE</p>
+              <p className="text-sm text-gray-400">Built by Manasa Padavala · ACCA · Ex-AVP Barclays & HSBC</p>
             </div>
 
             <div className="flex gap-8 text-sm text-gray-400">
@@ -665,7 +652,7 @@ export const LandingPage = () => {
             </div>
 
             <div className="text-sm text-gray-400">
-              © 2025 Gnanova.pro. All rights reserved.
+              © 2025 Gnanova AI. All rights reserved.
             </div>
           </div>
         </div>

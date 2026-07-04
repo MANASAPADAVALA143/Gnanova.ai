@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../hooks/useToast';
 import { Link, useNavigate } from 'react-router-dom';
-import { Loader2, Mail, Lock, Eye, EyeOff, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Loader2, Mail, Lock, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
+import { GnanovaLogo } from '../components/GnanovaLogo';
 
 const loginBenefits = [
   'IFRS 16, 15 & 9 — all in one platform',
@@ -79,13 +80,8 @@ export const Login = () => {
         ))}
 
         <div className="relative z-10 animate-slideUpFadeIn">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#667eea] to-[#764ba2] flex items-center justify-center">
-              <Sparkles className="w-7 h-7 text-white" />
-            </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-[#667eea] via-[#f093fb] to-[#667eea] bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer">
-              Gnanova.pro
-            </h1>
+          <div className="mb-4">
+            <GnanovaLogo height={44} />
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">Welcome to Gnanova AI</h2>
           <p className="text-xl text-gray-400">IFRS Compliance Platform for UAE Finance Teams</p>
