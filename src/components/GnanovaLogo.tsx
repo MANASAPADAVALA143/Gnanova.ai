@@ -21,15 +21,15 @@ export const GnanovaLogo = ({ height = 36, className = '', linkTo = '/' }: Gnano
     <img
       src="/gnanova-ai-logo.png"
       alt="Gnanova AI logo"
-      style={{ height, width: 'auto' }}
-      className={className}
+      style={{ height, width: 'auto', background: 'transparent' }}
+      className={`navbar-logo bg-transparent ${className}`}
       onError={() => setImgError(true)}
     />
   );
 
   if (linkTo) {
     return (
-      <Link to={linkTo} className="inline-flex items-center shrink-0">
+      <Link to={linkTo} className="inline-flex items-center shrink-0 bg-transparent">
         {logo}
       </Link>
     );
