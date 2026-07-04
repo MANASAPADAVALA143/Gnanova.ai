@@ -9,7 +9,7 @@ export const Contact = () => {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <nav className="border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <GnanovaLogo height={36} />
+          <GnanovaLogo height={40} />
           <Link
             to="/"
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"

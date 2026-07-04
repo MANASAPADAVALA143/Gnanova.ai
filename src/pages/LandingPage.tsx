@@ -257,7 +257,7 @@ export const LandingPage = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto pl-2 pr-6 py-4">
           <div className="flex items-center justify-between">
-            <GnanovaLogo height={36} />
+            <GnanovaLogo height={40} />
 
             <div className="hidden md:flex items-center gap-8">
               <div
