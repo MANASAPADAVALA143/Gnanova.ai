@@ -22,8 +22,11 @@ import {
   FileText,
   FileSpreadsheet,
   Bot,
+  Layers,
   type LucideIcon,
 } from 'lucide-react';
+
+type BadgeVariant = 'live' | 'preview' | 'inside' | 'muted';
 
 type ProductCard = {
   icon: LucideIcon;
@@ -35,21 +38,43 @@ type ProductCard = {
   external?: boolean;
   comingSoon?: boolean;
   badge?: string;
+  badgeVariant?: BadgeVariant;
   featured?: boolean;
   subtitle?: string;
+  interestPrompt?: string;
 };
 
 type ProductSection = {
   id: string;
   header: string;
+  eyebrow?: string;
+  description?: string;
   sectionBadge?: string;
+  showInterestBar?: boolean;
   cards: ProductCard[];
+};
+
+const ESTATECFO_URL = import.meta.env.VITE_ESTATECFO_URL as string | undefined;
+const RERA_OS_URL = import.meta.env.VITE_RERA_OS_URL as string | undefined;
+
+const badgeVariantClasses: Record<BadgeVariant, string> = {
+  live: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+  preview: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
+  inside: 'bg-sky-500/20 text-sky-400 border-sky-500/30',
+  muted: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
 };
 
 const productNavGroups = [
   {
     label: 'IFRS Compliance',
     items: [{ name: 'IFRS.ai', href: 'https://ifrsai.vercel.app/', external: true }],
+  },
+  {
+    label: 'Real Estate',
+    items: [
+      { name: 'EstateCFO', href: '#real-estate' },
+      { name: 'Gnanova RERA OS', href: '#real-estate' },
+    ],
   },
   {
     label: 'Finance Operations',
@@ -114,6 +139,54 @@ const productSections: ProductSection[] = [
         color: 'from-orange-500 to-amber-600',
         buttonText: 'View in IFRS.ai',
         link: 'https://ifrsai.vercel.app/dashboard/ifrs16',
+        external: true,
+      },
+    ],
+  },
+  {
+    id: 'real-estate',
+    eyebrow: 'Real Estate',
+    header: 'AI-Powered Real Estate CFO Stack',
+    description:
+      'From CRM to compliance — the full finance operating layer for real estate developers and CA firms managing rental portfolios.',
+    showInterestBar: false,
+    cards: [
+      {
+        icon: Building2,
+        title: 'EstateCFO',
+        description:
+          'Real estate CFO dashboard built for CA firms managing rental portfolios. KPI tracking, AR/AP aging, NOI analysis, and Power BI-style analytics — currently deployed for a multi-entity rental portfolio client.',
+        color: 'from-[#667eea] to-[#764ba2]',
+        badge: 'Live Now',
+        badgeVariant: 'live',
+        buttonText: 'Open EstateCFO',
+        link: ESTATECFO_URL || '/contact',
+        external: Boolean(ESTATECFO_URL),
+        interestPrompt: 'Interested in EstateCFO? Tell us your requirements.',
+      },
+      {
+        icon: Layers,
+        title: 'Gnanova RERA OS',
+        description:
+          'End-to-end real estate operating system — CRM and booking, construction progress tracking, revenue leakage detection, and RERA-style compliance and QPR reporting, unified into one CFO decision console.',
+        color: 'from-[#f093fb] to-[#f5576c]',
+        badge: 'Builder Preview',
+        badgeVariant: 'preview',
+        buttonText: 'View Demo',
+        link: RERA_OS_URL || '/contact',
+        external: Boolean(RERA_OS_URL),
+        interestPrompt: 'Interested in RERA OS? Tell us your requirements.',
+      },
+      {
+        icon: FileText,
+        title: 'IFRS 15 & 16 for Real Estate',
+        description:
+          'Off-plan SPA revenue recognition, RERA compliance, escrow tracking, and lease accounting — the compliance engine powering EstateCFO and RERA OS underneath.',
+        color: 'from-orange-500 to-amber-600',
+        badge: 'Inside IFRS.ai',
+        badgeVariant: 'inside',
+        buttonText: 'View in IFRS.ai',
+        link: 'https://ifrsai.vercel.app/dashboard/ifrs15/realestate',
         external: true,
       },
     ],
@@ -436,12 +509,22 @@ export const LandingPage = () => {
           <div className="space-y-20">
             {productSections.map((section) => (
               <div key={section.id} id={section.id}>
-                <div className="flex flex-wrap items-center gap-3 mb-8">
-                  <h3 className="text-2xl md:text-3xl font-bold">{section.header}</h3>
-                  {section.sectionBadge && (
-                    <span className="px-3 py-1 text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full">
-                      {section.sectionBadge}
+                <div className="mb-8">
+                  {section.eyebrow && (
+                    <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#667eea] mb-3">
+                      {section.eyebrow}
                     </span>
+                  )}
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <h3 className="text-2xl md:text-3xl font-bold">{section.header}</h3>
+                    {section.sectionBadge && (
+                      <span className="px-3 py-1 text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full">
+                        {section.sectionBadge}
+                      </span>
+                    )}
+                  </div>
+                  {section.description && (
+                    <p className="text-gray-400 max-w-3xl">{section.description}</p>
                   )}
                 </div>
 
@@ -462,7 +545,11 @@ export const LandingPage = () => {
 
                       <div className="relative">
                         {card.badge && (
-                          <span className="inline-block px-2.5 py-1 mb-4 text-xs font-semibold bg-gray-500/20 text-gray-400 border border-gray-500/30 rounded-full">
+                          <span
+                            className={`inline-block px-2.5 py-1 mb-4 text-xs font-semibold border rounded-full ${
+                              badgeVariantClasses[card.badgeVariant || 'muted']
+                            }`}
+                          >
                             {card.badge}
                           </span>
                         )}
@@ -477,23 +564,34 @@ export const LandingPage = () => {
                         </h4>
                         <p className="text-gray-400">{card.description}</p>
                         {renderProductButton(card)}
+                        {card.interestPrompt && (
+                          <button
+                            type="button"
+                            onClick={openDemoModal}
+                            className="mt-4 text-sm text-gray-500 hover:text-orange-400 transition-colors text-left"
+                          >
+                            {card.interestPrompt} → Talk to Us
+                          </button>
+                        )}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-white/5 border border-white/10 rounded-2xl">
-                  <p className="text-gray-400 text-sm">
-                    Interested in {section.header.split('—')[0].trim()}? Tell us your requirements.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={openDemoModal}
-                    className="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all whitespace-nowrap"
-                  >
-                    Talk to Us
-                  </button>
-                </div>
+                {section.showInterestBar !== false && (
+                  <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 bg-white/5 border border-white/10 rounded-2xl">
+                    <p className="text-gray-400 text-sm">
+                      Interested in {section.header.split('—')[0].trim()}? Tell us your requirements.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={openDemoModal}
+                      className="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all whitespace-nowrap"
+                    >
+                      Talk to Us
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>
