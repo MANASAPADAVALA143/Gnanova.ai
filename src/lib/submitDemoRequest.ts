@@ -1,4 +1,8 @@
-import { CONTACT_EMAIL } from './contactConfig';
+import {
+  CONTACT_EMAIL,
+  FORMSUBMIT_AUTORESPONSE,
+  FORMSUBMIT_ID,
+} from './contactConfig';
 
 export type DemoRequestData = {
   fullName: string;
@@ -13,11 +17,12 @@ export type DemoRequestData = {
   bestTime: string;
 };
 
-export async function submitDemoRequest(data: DemoRequestData): Promise<void> {
-  const payload = {
+export function buildFormSubmitPayload(data: DemoRequestData) {
+  return {
     _subject: `Demo Request: ${data.fullName} (${data.email}) — ${data.companyName}`,
     _template: 'table',
     _replyto: data.email,
+    _autoresponse: FORMSUBMIT_AUTORESPONSE,
     email: data.email,
     name: data.fullName,
     'Full Name': data.fullName,
@@ -32,7 +37,9 @@ export async function submitDemoRequest(data: DemoRequestData): Promise<void> {
     'Preferred Contact': data.contactMethod,
     'Best Time': data.bestTime,
   };
+}
 
+export async function submitDemoRequest(data: DemoRequestData): Promise<void> {
   try {
     const apiRes = await fetch('/api/contact', {
       method: 'POST',
@@ -44,13 +51,14 @@ export async function submitDemoRequest(data: DemoRequestData): Promise<void> {
     // fall through to FormSubmit
   }
 
-  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`, {
+  const endpoint = FORMSUBMIT_ID || CONTACT_EMAIL;
+  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(endpoint)}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(buildFormSubmitPayload(data)),
   });
 
   if (!res.ok) {
