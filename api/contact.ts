@@ -1,5 +1,5 @@
-const CONTACT_EMAIL = 'manusmile0587@gmail.com';
-const FORMSUBMIT_ID = process.env.FORMSUBMIT_ID || '44b7f96bf3a656d18d36e1622d199470';
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'contact@gnanova.pro';
+const FORMSUBMIT_ID = process.env.FORMSUBMIT_ID || '';
 const FORMSUBMIT_AUTORESPONSE =
   process.env.FORMSUBMIT_AUTORESPONSE ||
   "Thank you for reaching out to Gnanova AI. We've received your demo request and Manasa will get back to you within 24 hours via your preferred contact method. — Team Gnanova";
