@@ -750,7 +750,7 @@ export const LandingPage = () => {
             </div>
 
             <div className="text-sm text-gray-400">
-              © 2025 Gnanova AI. All rights reserved.
+              © 2026 Gnanova Pro AI Technologies Private Limited. All rights reserved. | CIN: U62099TS2026PTC221233
             </div>
           </div>
         </div>
