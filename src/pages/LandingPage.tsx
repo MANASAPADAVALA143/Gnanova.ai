@@ -382,6 +382,7 @@ export const LandingPage = () => {
                 )}
               </div>
               <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Who We Help</a>
+              <Link to="/library" className="text-gray-300 hover:text-white transition-colors">Library</Link>
               <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
             </div>
 

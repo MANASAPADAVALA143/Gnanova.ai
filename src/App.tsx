@@ -6,6 +6,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Contact } from './pages/Contact';
 import { Survey } from './pages/Survey';
+import { Library } from './pages/Library';
 import { Dashboard } from './pages/Dashboard';
 import { Content } from './pages/Content';
 import { ContentDetail } from './pages/ContentDetail';
@@ -67,6 +68,7 @@ function AppContent() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/survey" element={<Survey />} />
+        <Route path="/library" element={<Library />} />
         <Route
           path="/login"
           element={
