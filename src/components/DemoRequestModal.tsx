@@ -1,14 +1,9 @@
-import { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useDemoModal } from '../contexts/DemoModalContext';
 import { DemoRequestForm } from './DemoRequestForm';
 
 export const DemoRequestModal = () => {
   const { isOpen, defaultProductInterest, closeDemoModal } = useDemoModal();
-
-  useEffect(() => {
-    // remount form when product default changes so selection applies
-  }, [defaultProductInterest, isOpen]);
 
   if (!isOpen) return null;
 
