@@ -23,6 +23,7 @@ import {
   FileSpreadsheet,
   Bot,
   Layers,
+  BookOpen,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -238,6 +239,45 @@ const productSections: ProductSection[] = [
     ],
   },
   {
+    id: 'ai-finance-training',
+    eyebrow: 'Training',
+    header: 'AI for Finance Professionals',
+    description:
+      'Corporate training to build practical AI skills — tools, prompting, and real finance use cases. Live, hands-on, online or onsite.',
+    sectionBadge: 'Limited Seats',
+    cards: [
+      {
+        icon: BookOpen,
+        title: 'Corporate Training Program',
+        description:
+          'AI Fundamentals, ChatGPT / Claude / Copilot overview, Prompt Engineering (RACE Framework), and Claude in Excel — for FP&A, accounting, audit, and treasury.',
+        color: 'from-orange-500 to-amber-600',
+        badge: 'Live Cohorts',
+        badgeVariant: 'live',
+        buttonText: 'View Training',
+        link: '/training',
+      },
+      {
+        icon: Brain,
+        title: '60-Second Reality Check',
+        description:
+          'Help shape upcoming AI-in-Finance training. Tell us what your team needs — takes under a minute.',
+        color: 'from-[#667eea] to-[#764ba2]',
+        buttonText: 'Take Survey',
+        link: '/survey',
+      },
+      {
+        icon: Sparkles,
+        title: 'Free Resource Library',
+        description:
+          'Automation packs for Finance, Real Estate, and PE teams — bookmark and download from gnanova.pro/library.',
+        color: 'from-[#4facfe] to-[#00f2fe]',
+        buttonText: 'Open Library',
+        link: '/library',
+      },
+    ],
+  },
+  {
     id: 'ca-firm',
     header: 'CA Firm Workspace',
     cards: [
@@ -383,6 +423,7 @@ export const LandingPage = () => {
               </div>
               <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Who We Help</a>
               <Link to="/library" className="text-gray-300 hover:text-white transition-colors">Library</Link>
+              <Link to="/training" className="text-gray-300 hover:text-white transition-colors">Training</Link>
               <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
             </div>
 
