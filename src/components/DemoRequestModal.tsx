@@ -1,11 +1,18 @@
+import { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useDemoModal } from '../contexts/DemoModalContext';
 import { DemoRequestForm } from './DemoRequestForm';
 
 export const DemoRequestModal = () => {
-  const { isOpen, closeDemoModal } = useDemoModal();
+  const { isOpen, defaultProductInterest, closeDemoModal } = useDemoModal();
+
+  useEffect(() => {
+    // remount form when product default changes so selection applies
+  }, [defaultProductInterest, isOpen]);
 
   if (!isOpen) return null;
+
+  const isTraining = defaultProductInterest === 'AI Finance Training';
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -17,7 +24,11 @@ export const DemoRequestModal = () => {
         <div className="sticky top-0 flex items-center justify-between p-6 border-b border-white/10 bg-[#141414] z-10">
           <div>
             <h2 className="text-2xl font-bold text-white">Talk to Us</h2>
-            <p className="text-sm text-gray-400 mt-1">Book a demo with the Gnanova AI team</p>
+            <p className="text-sm text-gray-400 mt-1">
+              {isTraining
+                ? 'Register interest in AI Finance Training with the Gnanova AI team'
+                : 'Book a demo or AI training with the Gnanova AI team'}
+            </p>
           </div>
           <button
             onClick={closeDemoModal}
@@ -28,7 +39,11 @@ export const DemoRequestModal = () => {
           </button>
         </div>
         <div className="p-6">
-          <DemoRequestForm compact />
+          <DemoRequestForm
+            key={defaultProductInterest || 'default'}
+            compact
+            defaultProductInterest={defaultProductInterest || undefined}
+          />
         </div>
       </div>
     </div>

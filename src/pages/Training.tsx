@@ -143,7 +143,7 @@ export const Training = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   type="button"
-                  onClick={openDemoModal}
+                  onClick={() => openDemoModal('AI Finance Training')}
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all"
                 >
                   Register Now
@@ -253,7 +253,7 @@ export const Training = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 type="button"
-                onClick={openDemoModal}
+                onClick={() => openDemoModal('AI Finance Training')}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all"
               >
                 Register Now

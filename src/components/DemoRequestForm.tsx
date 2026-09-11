@@ -5,7 +5,15 @@ import { DEMO_WHATSAPP_MESSAGE, getWhatsAppUrl } from '../lib/contactConfig';
 
 const COUNTRIES = ['UAE', 'India', 'UK', 'USA', 'Saudi Arabia', 'Other'];
 const ROLES = ['CFO', 'Finance Manager', 'CA', 'Real Estate Developer', 'Other'];
-const PRODUCTS = ['IFRS 16', 'IFRS 15', 'IFRS 9', 'All Three', 'Not Sure'];
+const PRODUCTS = [
+  'AI Finance Training',
+  'IFRS 16',
+  'IFRS 15',
+  'IFRS 9',
+  'All Three',
+  'EstateCFO',
+  'Not Sure',
+];
 const CONTACT_METHODS = ['WhatsApp', 'Email', 'Video Call'];
 const BEST_TIMES = ['Morning UAE', 'Afternoon UAE', 'Evening UAE'];
 
@@ -17,9 +25,19 @@ const labelClass = 'block text-sm font-medium text-gray-400 mb-2';
 type DemoRequestFormProps = {
   compact?: boolean;
   onSuccess?: () => void;
+  defaultProductInterest?: string;
 };
 
-export const DemoRequestForm = ({ compact = false, onSuccess }: DemoRequestFormProps) => {
+export const DemoRequestForm = ({
+  compact = false,
+  onSuccess,
+  defaultProductInterest,
+}: DemoRequestFormProps) => {
+  const initialProduct =
+    defaultProductInterest && PRODUCTS.includes(defaultProductInterest)
+      ? defaultProductInterest
+      : 'All Three';
+
   const [form, setForm] = useState<DemoRequestData>({
     fullName: '',
     companyName: '',
@@ -27,7 +45,7 @@ export const DemoRequestForm = ({ compact = false, onSuccess }: DemoRequestFormP
     whatsapp: '',
     country: 'UAE',
     role: 'CFO',
-    productInterest: 'All Three',
+    productInterest: initialProduct,
     painPoint: '',
     contactMethod: 'WhatsApp',
     bestTime: 'Morning UAE',

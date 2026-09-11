@@ -24,7 +24,7 @@ export const Contact = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Talk to Us</h1>
           <p className="text-xl text-gray-400">
-            Book a demo of IFRS.ai or any Gnanova product. Manasa will respond within 24 hours.
+            Book a demo of IFRS.ai, AI Finance Training, or any Gnanova product. Manasa will respond within 24 hours.
           </p>
         </div>
 
