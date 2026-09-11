@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -6,7 +6,9 @@ import {
   BookOpen,
   Brain,
   CheckCircle2,
+  Copy,
   FileSpreadsheet,
+  MessageCircle,
   Sparkles,
   Target,
   Users,
@@ -19,6 +21,16 @@ import { useDemoModal } from '../contexts/DemoModalContext';
 const PAGE_TITLE = 'AI for Finance Professionals | Corporate Training | Gnanova Pro';
 const PAGE_DESCRIPTION =
   'Live, practical corporate training on AI fundamentals, ChatGPT/Claude/Copilot, prompt engineering (RACE), and Claude in Excel — built for FP&A, accounting, audit, and treasury teams.';
+
+const TRAINING_SHARE_URL = 'https://www.gnanova.pro/training?utm_source=whatsapp';
+
+const WHATSAPP_SHARE_CAPTION = `AI FOR FINANCE PROFESSIONALS
+Build a basic understanding of AI — tools, prompting, and practical use for finance.
+
+Limited Seats | Online / Onsite Corporate Training
+
+👉 Register Now:
+${TRAINING_SHARE_URL}`;
 
 const modules = [
   {
@@ -68,6 +80,7 @@ function setMetaDescription(content: string) {
 
 export const Training = () => {
   const { openDemoModal } = useDemoModal();
+  const [copied, setCopied] = useState<'link' | 'caption' | null>(null);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -82,6 +95,18 @@ export const Training = () => {
       if (previousDescription) setMetaDescription(previousDescription);
     };
   }, []);
+
+  const copyText = async (value: string, kind: 'link' | 'caption') => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(kind);
+      window.setTimeout(() => setCopied(null), 2000);
+    } catch {
+      setCopied(null);
+    }
+  };
+
+  const whatsappShareHref = `https://wa.me/?text=${encodeURIComponent(WHATSAPP_SHARE_CAPTION)}`;
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
@@ -235,6 +260,60 @@ export const Training = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="px-6 py-16 border-t border-white/10">
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-6">
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#667eea] mb-3">
+                Share on WhatsApp
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">Send this to your students</h2>
+              <p className="text-gray-400 text-sm">
+                WhatsApp images are not clickable. Send the poster plus this caption — the URL becomes
+                the Register Now link.
+              </p>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 space-y-6">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+                  Ready-to-send caption
+                </p>
+                <pre className="whitespace-pre-wrap text-sm text-gray-300 bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 leading-relaxed">
+                  {WHATSAPP_SHARE_CAPTION}
+                </pre>
+              </div>
+
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => copyText(WHATSAPP_SHARE_CAPTION, 'caption')}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white/10 border border-white/10 rounded-xl text-sm font-semibold hover:bg-white/15 transition-all"
+                >
+                  <Copy className="w-4 h-4" />
+                  {copied === 'caption' ? 'Caption copied' : 'Copy caption'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => copyText(TRAINING_SHARE_URL, 'link')}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white/10 border border-white/10 rounded-xl text-sm font-semibold hover:bg-white/15 transition-all"
+                >
+                  <Copy className="w-4 h-4" />
+                  {copied === 'link' ? 'Link copied' : 'Copy link only'}
+                </button>
+                <a
+                  href={whatsappShareHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#25D366] text-white rounded-xl text-sm font-semibold hover:bg-[#20bd5a] transition-all"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Open WhatsApp with caption
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
