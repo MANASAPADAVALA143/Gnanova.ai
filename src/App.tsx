@@ -8,6 +8,9 @@ import { Contact } from './pages/Contact';
 import { Survey } from './pages/Survey';
 import { Library } from './pages/Library';
 import { Training } from './pages/Training';
+import { Finance } from './pages/Finance';
+import { Schools } from './pages/Schools';
+import { Healthcare } from './pages/Healthcare';
 import { Dashboard } from './pages/Dashboard';
 import { Content } from './pages/Content';
 import { ContentDetail } from './pages/ContentDetail';
@@ -71,6 +74,9 @@ function AppContent() {
         <Route path="/survey" element={<Survey />} />
         <Route path="/library" element={<Library />} />
         <Route path="/training" element={<Training />} />
+        <Route path="/finance" element={<Finance />} />
+        <Route path="/schools" element={<Schools />} />
+        <Route path="/healthcare" element={<Healthcare />} />
         <Route
           path="/login"
           element={
